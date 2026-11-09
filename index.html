@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biltu Development | Software & Mobile App Development Company</title>
+    <meta name="description" content="Biltu Development is a premier software and mobile application development agency specializing in Android, Web, and Custom Enterprise Solutions.">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #0f172a;
+            --accent: #38bdf8;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --white: #ffffff;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--secondary);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--primary);
+            font-size: 1.6rem;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 1.5rem 5rem;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid #475569;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 5rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 0.8rem;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Services Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 2.2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .card-icon {
+            width: 55px;
+            height: 55px;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--secondary);
+        }
+
+        .card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* About / Corporate Info */
+        .about-section {
+            background: var(--white);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .about-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-info h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-info p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .info-list i {
+            color: var(--primary);
+        }
+
+        .corporate-card {
+            background: var(--secondary);
+            color: var(--white);
+            padding: 2.5rem;
+            border-radius: 16px;
+        }
+
+        .corporate-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            border-bottom: 1px solid #334155;
+            padding-bottom: 0.8rem;
+        }
+
+        .corp-detail {
+            margin-bottom: 1.2rem;
+        }
+
+        .corp-detail span {
+            display: block;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .corp-detail strong {
+            font-size: 1.05rem;
+            color: var(--white);
+        }
+
+        /* Contact Section */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .contact-box {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            font-size: 1.3rem;
+            color: var(--primary);
+            background: rgba(37, 99, 235, 0.1);
+            padding: 12px;
+            border-radius: 10px;
+        }
+
+        .contact-item h4 {
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-item p, .contact-item a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 0.9rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: #94a3b8;
+            padding: 4rem 1.5rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.7rem;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid #1e293b;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Modal for Privacy Policy & Terms */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.8);
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            margin: 5% auto;
+            padding: 2.5rem;
+            border-radius: 12px;
+            max-width: 800px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 1.5rem;
+            top: 1.2rem;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+
+        .modal-content h2 {
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .modal-content h3 {
+            margin: 1.2rem 0 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .modal-content p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                padding: 1.5rem;
+                border-bottom: 1px solid var(--border);
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-layer-group"></i>
+                Biltu <span>Development</span>
+            </a>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+                <li><a href="#services" onclick="toggleMenu()">Services</a></li>
+                <li><a href="#about" onclick="toggleMenu()">About Organization</a></li>
+                <li><a href="#products" onclick="toggleMenu()">Solutions</a></li>
+                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="badge"><i class="fa-solid fa-shield-check"></i> Official Organization Portal</div>
+            <h1>Building Next-Generation <span>Mobile & Web Solutions</span></h1>
+            <p>Biltu Development is a professional software development organization dedicated to crafting scalable Android applications, utility software, and cloud-integrated business platforms.</p>
+            <div class="btn-group">
+                <a href="#contact" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Contact Support</a>
+                <a href="#about" class="btn btn-outline"><i class="fa-solid fa-building"></i> Company Profile</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="section-header">
+            <h2>Our Core Capabilities</h2>
+            <p>Delivering reliable, secure, and user-centric digital solutions across mobile and web ecosystems.</p>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon"><i class="fa-brands fa-android"></i></div>
+                <h3>Android App Development</h3>
+                <p>Designing and publishing high-performance native and cross-platform Android applications compliant with modern Google Play guidelines.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-code"></i></div>
+                <h3>Full-Stack Web Applications</h3>
+                <p>Developing responsive web applications, single-page ERP systems, and progressive web apps using modern JavaScript frameworks.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-cloud"></i></div>
+                <h3>Cloud & Realtime Systems</h3>
+                <p>Integrating secure cloud databases, real-time queue management systems, and automated authentication architectures.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About & Organization Details (Crucial for Google Verification) -->
+    <div class="about-section" id="about">
+        <section>
+            <div class="about-wrapper">
+                <div class="about-info">
+                    <h2>About Biltu Development</h2>
+                    <p>Founded with a mission to simplify digital transformation for businesses and everyday users, <strong>Biltu Development</strong> focuses on building practical, lightweight, and accessible software solutions.</p>
+                    <p>From healthcare appointment management systems and retail point-of-sale (POS) tools to consumer mobile applications, we maintain strict standards of data privacy, security, and user experience.</p>
+                    <ul class="info-list">
+                        <li><i class="fa-solid fa-circle-check"></i> Verified Software Publisher & Development Studio</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Compliant with Global User Data & Privacy Standards</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Dedicated Customer & Technical Support</li>
+                    </ul>
+                </div>
+                <div class="corporate-card">
+                    <h3>Organization Information</h3>
+                    <div class="corp-detail">
+                        <span>Legal / Organization Name</span>
+                        <strong>Biltu Development</strong>
+                    </div>
+                    <div class="corp-detail">
+                        <span>Industry Classification</span>
+                        <strong>Software Development & IT Services</strong>
+                    </div>
+                    <div class="corp-detail">
+                        <span>Official Contact Email</span>
+                        <strong>dasbiltu016@gmail.com</strong>
+                    </div>
+                    <div class="corp-detail">
+                        <span>Official Phone / Support Line</span>
+                        <strong>+91 8637330216</strong>
+                    </div>
+                    <div class="corp-detail">
+                        <span>Operating Region</span>
+                        <strong>Alipurduar, West Bengal, India (PIN - 736121)</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Digital Products / Solutions Section -->
+    <section id="products">
+        <div class="section-header">
+            <h2>Our Software Ecosystem</h2>
+            <p>A glimpse into the digital products and enterprise tools engineered by Biltu Development.</p>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-user-doctor"></i></div>
+                <h3>Healthcare & Queue Systems</h3>
+                <p>Smart digital appointment booking, live token tracking, and clinic management solutions for modern healthcare providers.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-store"></i></div>
+                <h3>Retail POS & Inventory</h3>
+                <p>Streamlined billing, barcode scanning, and inventory tracking software tailored for retail stores and pharmacies.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-gamepad"></i></div>
+                <h3>Consumer Utility & Games</h3>
+                <p>Engaging mobile games, hyper-local utility apps, and multi-vendor marketplace platforms built for everyday Android users.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-header">
+            <h2>Get In Touch</h2>
+            <p>Have questions regarding our applications, privacy policies, or enterprise services? Reach out to our team directly.</p>
+        </div>
+        <div class="contact-wrapper">
+            <div class="contact-box">
+                <div class="contact-item">
+                    <i class="fa-solid fa-building-user"></i>
+                    <div>
+                        <h4>Organization Name</h4>
+                        <p>Biltu Development</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div>
+                        <h4>Official Email</h4>
+                        <a href="mailto:dasbiltu016@gmail.com">dasbiltu016@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-phone-volume"></i>
+                    <div>
+                        <h4>Phone Number</h4>
+                        <a href="tel:+918637330216">+91 8637330216</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <h4>Registered Location</h4>
+                        <p>Alipurduar, West Bengal, India - 736121</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-box">
+                <form class="contact-form" onsubmit="handleForm(event)">
+                    <input type="text" placeholder="Your Full Name" required>
+                    <input type="email" placeholder="Your Email Address" required>
+                    <input type="text" placeholder="Subject" required>
+                    <textarea rows="4" placeholder="How can Biltu Development help you?" required></textarea>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                        <i class="fa-solid fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>Biltu Development</h4>
+                <p style="font-size: 0.9rem; margin-bottom: 1rem;">Innovative mobile application and software development company delivering reliable digital solutions.</p>
+                <p style="font-size: 0.85rem; color: #cbd5e1;">
+                    <i class="fa-solid fa-envelope"></i> dasbiltu016@gmail.com<br>
+                    <i class="fa-solid fa-phone"></i> +91 8637330216
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Our Services</a></li>
+                    <li><a href="#about">Organization Info</a></li>
+                    <li><a href="#contact">Contact Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal & Compliance</h4>
+                <ul class="footer-links">
+                    <li><a onclick="openModal('privacyModal')">Privacy Policy</a></li>
+                    <li><a onclick="openModal('termsModal')">Terms & Conditions</a></li>
+                    <li><a onclick="openModal('dataModal')">Data Deletion Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 <strong>Biltu Development</strong>. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('privacyModal')">&times;</span>
+            <h2>Privacy Policy</h2>
+            <p><strong>Effective Date:</strong> November 2026</p>
+            <p><strong>Biltu Development</strong> ("we", "our", or "us") respects the privacy of our users. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website or use our mobile applications published on Google Play.</p>
+            <h3>1. Information We Collect</h3>
+            <p>Depending on the application, we may collect minimal personal information such as your name, email address, or phone number solely for app functionality (such as account creation or appointment booking). Camera or location permissions are requested strictly when required by specific features (e.g., QR code scanning or map services).</p>
+            <h3>2. How We Use Information</h3>
+            <p>We use the collected data exclusively to provide, maintain, and improve our software services. We do not sell or rent user data to third parties.</p>
+            <h3>3. Contact Us</h3>
+            <p>If you have any questions about this Privacy Policy, please contact us at:<br>
+            <strong>Email:</strong> dasbiltu016@gmail.com<br>
+            <strong>Phone:</strong> +91 8637330216</p>
+        </div>
+    </div>
+
+    <!-- Terms & Conditions Modal -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('termsModal')">&times;</span>
+            <h2>Terms and Conditions</h2>
+            <p>Welcome to <strong>Biltu Development</strong>. By downloading or using our mobile applications and web services, these terms will automatically apply to you.</p>
+            <h3>1. Intellectual Property</h3>
+            <p>All applications, source codes, graphics, and trademarks associated with Biltu Development remain the sole intellectual property of Biltu Development.</p>
+            <h3>2. Acceptable Use</h3>
+            <p>Users must not attempt to reverse-engineer, modify, or exploit our applications for unauthorized commercial purposes.</p>
+            <h3>3. Support & Contact</h3>
+            <p>For official inquiries or support requests:<br>
+            <strong>Organization:</strong> Biltu Development<br>
+            <strong>Email:</strong> dasbiltu016@gmail.com | <strong>Phone:</strong> +91 8637330216</p>
+        </div>
+    </div>
+
+    <!-- Data Deletion Policy Modal -->
+    <div id="dataModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('dataModal')">&times;</span>
+            <h2>User Data Deletion Policy</h2>
+            <p>In compliance with Google Play Console Data Safety requirements, <strong>Biltu Development</strong> provides users full control over their personal data.</p>
+            <h3>How to Request Data Deletion</h3>
+            <p>If you wish to delete your account and associated data from any application published by Biltu Development, please send an email to <strong>dasbiltu016@gmail.com</strong> with your registered phone number or email address. Your data will be permanently removed from our databases within 7 working days.</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('active');
+        }
+
+        function openModal(id) {
+            document.getElementById(id).style.display = 'block';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        function handleForm(e) {
+            e.preventDefault();
+            alert('Thank you for contacting Biltu Development! Please also feel free to email us directly at dasbiltu016@gmail.com.');
+            e.target.reset();
+        }
+
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
